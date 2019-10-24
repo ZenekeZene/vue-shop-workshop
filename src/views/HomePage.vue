@@ -3,36 +3,18 @@
     <article class="filters">
       <section class="filters__price">
         <p>Filter by price</p>
-        <vue-slider v-model="rangePrice" :enable-cross="false" :marks="marks" ref="price"></vue-slider>
-        <span>${{ rangePrice[0] }}-</span>
-        <span>${{ rangePrice[1] }}</span>
+        <!-- vue-slider (vendor) -->
+        <span><!-- rangePrice[0] -->-</span>
+        <span><!-- rangePrice[1] --></span>
       </section>
     </article>
-    <gallery :rangePriceSelected="rangePrice"></gallery>
+    <gallery></gallery>
   </main>
 </template>
 
 <script>
-import VueSlider from "vue-slider-component";
-import "vue-slider-component/theme/default.css";
-import Gallery from "@/components/Gallery.vue";
-
 export default {
   name: "home",
-  components: {
-    Gallery,
-    VueSlider,
-  },
-  data() {
-    return {
-      rangePrice: [20, 60],
-      sizes: ["small", "medium", "large"],
-      marks: {
-        "5": "💸",
-        "100": "💰"
-      }
-    };
-  }
 };
 </script>
 

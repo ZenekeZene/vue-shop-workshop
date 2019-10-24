@@ -1,47 +1,17 @@
 <template>
   <article>
-    <ol class="gallery" v-if="productsFiltered.length">
-      <li v-for="(productInfo, index) in productsFiltered" :key="`product-${index}`">
-        <router-link :to="{ name: 'shopSingle', params: { id: productInfo._id }}" class="link">
-          <product-item :product-info="productInfo" :isMini="true"></product-item>
-        </router-link>
+    <ol>
+      <li>
+        <!-- Producto -->
       </li>
     </ol>
-    <p
-      v-if="productsFiltered.length == 0"
-    >Lo lamentamos, no hay productos con esas características&nbsp;&nbsp;🥺</p>
+    <p>Lo lamentamos, no hay productos con esas características&nbsp;&nbsp;🥺</p>
   </article>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
-import ProductItem from "@/components/ProductItem.vue";
-import products from '../assets/products.js';
-
 export default {
   name: "Gallery",
-  components: {
-    ProductItem
-  },
-  props: {
-    rangePriceSelected: {
-      type: Array,
-      default: () => []
-    }
-  },
-  data() {
-    return {
-      products: require('../assets/products.js'),
-    }
-  },
-  computed: {
-    productsFiltered() {
-      return this.products.filter(product => {
-        const priceCleaned = parseFloat(product.price.replace("$", ""));
-        return priceCleaned > this.rangePriceSelected[0] && priceCleaned < this.rangePriceSelected[1];
-      })
-    },
-  },
 };
 </script>
 

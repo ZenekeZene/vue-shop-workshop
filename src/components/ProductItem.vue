@@ -1,33 +1,19 @@
 <template>
   <article class="item">
-    <img v-show="productInfo.picture" :src="productInfo.picture" class="item__image" />
+    <img class="item__image" />
     <section class="item__info">
-      <h2>{{ productInfo.name }}</h2>
-      <p>{{ productInfo.description_short }}</p>
-      <p class="item__size">({{ size(productInfo.size) }})</p>
-      <p class="item__price">{{ productInfo.price }}</p>
-      <slot name="product-actions"></slot>
+      <h2><!-- name --></h2>
+      <p><!-- description_short --></p>
+      <p class="item__size"><!-- size --></p>
+      <p class="item__price"><!-- price --></p>
     </section>
-    <span class="on-sale" v-if="productInfo.onSale">SALE</span>
+    <span class="on-sale">SALE</span>
   </article>
 </template>
 
 <script>
 export default {
   name: 'ProductItem',
-  props: {
-    productInfo: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  methods: {
-    size(sizeRAW) {
-      return `Size ${
-        sizeRAW === 'small' ? 'S' : sizeRAW === 'medium' ? 'M' : 'L'
-      }`;
-    },
-  },
 };
 </script>
 <style lang="scss">
