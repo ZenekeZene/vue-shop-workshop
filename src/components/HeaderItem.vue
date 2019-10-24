@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Dealers</h1>
+    <h1>My shop</h1>
     <article class="cart">
       <span class="icon"></span>
     </article>
