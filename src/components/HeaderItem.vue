@@ -1,16 +1,22 @@
 <template>
   <header>
-    <h1>My shop</h1>
-    <article class="cart">
+    <h1>{{ title }}</h1>
+    <article class="cart" >
       <span class="icon"></span>
     </article>
   </header>
 </template>
 
 <script>
-
 export default {
   name: "HeaderItem",
+  props: {
+    title: {
+      default: '',
+      type: String,
+    },
+
+  },
 };
 </script>
 <style scoped lang="scss">

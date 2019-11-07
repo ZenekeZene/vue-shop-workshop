@@ -1,17 +1,21 @@
 <template>
   <main id="app">
-    <!-- HeaderItem -->
-    <!-- RouterView -->
+    <header-item title="Mi tiendita"></header-item>
+    <RouterView/>
   </main>
 </template>
 
 <script>
+import HeaderItem from './components/HeaderItem';
 export default {
   name: "App",
+  components: {
+    HeaderItem,
+  },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
