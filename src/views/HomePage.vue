@@ -8,18 +8,20 @@
         <span>{{ rangePrice[1] }}</span>
       </section>
     </article>
-    <!--<gallery></gallery>-->
+    <gallery></gallery>
   </main>
 </template>
 
 <script>
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
+import Gallery from "@/components/Gallery.vue";
 
 export default {
   name: "home",
   components: {
     VueSlider,
+    Gallery,
   },
   data() {
     return {

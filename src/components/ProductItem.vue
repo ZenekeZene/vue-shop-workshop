@@ -1,19 +1,34 @@
 <template>
   <article class="item">
-    <img class="item__image" />
+    <img class="item__image" :src="productInfo.picture" />
     <section class="item__info">
-      <h2><!-- name --></h2>
-      <p><!-- description_short --></p>
-      <p class="item__size"><!-- size --></p>
-      <p class="item__price"><!-- price --></p>
+      <h2>{{ productInfo.name }}</h2>
+      <p>{{ productInfo.description_short }}</p>
+      <p class="item__price">{{ productInfo.price }}</p>
     </section>
+    <button @click="addItem">Añadir</button>
     <span class="on-sale">SALE</span>
   </article>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'ProductItem',
+  props: {
+    productInfo: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  methods: {
+    ...mapMutations(['addItemOnCart']),
+    addItem() {
+      console.log(this.addItemOnCart);
+      this.addItemOnCart(this.productInfo);
+    }
+  },
 };
 </script>
 <style lang="scss">

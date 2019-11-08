@@ -1,17 +1,45 @@
 <template>
   <article>
     <ol>
-      <li>
-        <!-- Producto -->
+      <li v-for="(productInfo, index) in products" :key="`product-${index}`">
+        <productItem :productInfo="productInfo"></productItem>
       </li>
     </ol>
-    <p>Lo lamentamos, no hay productos con esas características&nbsp;&nbsp;🥺</p>
+    <p v-if="products.length === 0">Lo lamentamos, no hay productos con esas características&nbsp;&nbsp;🥺</p>
+    <li v-for="(product, index) in cart" :key="`cart-${index}`">
+      {{ product._id }}
+    </li>
   </article>
 </template>
 
 <script>
+import axios from "axios";
+import ProductItem from "@/components/ProductItem.vue";
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "Gallery",
+  components: {
+    ProductItem
+  },
+  data() {
+    return {
+      products: []
+    }
+  },
+
+  computed: {
+    ...mapState(['cart']),
+  },
+  methods: {
+    ...mapActions(["getProductsFromCloud"]),
+  },
+  mounted() {
+    this.getProductsFromCloud().then(response => {
+      this.products = response.products;
+    });
+    console.log(this.cart);
+  },
 };
 </script>
 
